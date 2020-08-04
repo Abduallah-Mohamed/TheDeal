@@ -11,7 +11,7 @@ const signToken = id => {
 }
 
 // create new user
-exports.signup = catchAsync(async (req, res, next) => {
+exports.signup = catchAsync(async(req, res, next) => {
     const user = await User.create(req.body);
 
     const token = await signToken(user._id);
@@ -27,7 +27,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 });
 
 // ? login the user to our system
-exports.login = catchAsync(async (req, res, next) => {
+exports.login = catchAsync(async(req, res, next) => {
     const {
         email,
         password
@@ -41,9 +41,11 @@ exports.login = catchAsync(async (req, res, next) => {
     }
 
     // ! Check if the password and email are correct
-    const user = await User.findOne(email).select('+password');
+    const user = await User.findOne({
+        email
+    }).select('+password');
 
-    if (!user || !(await user.correctPassword(password, user.password))) {
+    if (!user || !(await user.correctPasswords(password, user.password))) {
         return next(
             createError(404, 'Email or Password is not correct ... ')
         )
