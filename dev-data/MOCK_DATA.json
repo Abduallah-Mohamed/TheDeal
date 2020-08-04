@@ -1,0 +1,42 @@
+[{
+        "name": "Product A",
+        "price": 345,
+        "weight": 20,
+        "description": "this is the best prduct for the king!",
+        "SKU": "34343fd43545"
+    },
+    {
+        "name": "Product B",
+        "price": 35,
+        "weight": 120,
+        "description": "Toys for Boys!",
+        "SKU": "34343223f"
+    },
+    {
+        "name": "Product C",
+        "price": 5,
+        "weight": 10,
+        "description": "the Bigger is here!",
+        "SKU": "99987nv"
+    },
+    {
+        "name": "Product D",
+        "price": 333,
+        "weight": 44,
+        "description": "HelloOoOo!",
+        "SKU": "656mk98"
+    }, {
+        "name": "Product E",
+        "price": 50,
+        "weight": 90,
+        "description": "Mango is Yellow!",
+        "SKU": "34343fjls"
+    },
+    {
+        "name": "Product F",
+        "price": 21,
+        "weight": 33,
+        "description": "Kaka is the best Player!",
+        "SKU": "37379kse3"
+    }
+]
