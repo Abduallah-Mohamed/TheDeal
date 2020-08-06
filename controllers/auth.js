@@ -61,6 +61,15 @@ exports.login = catchAsync(async(req, res, next) => {
     });
 });
 
+
+//? logout functionality
+exports.logout = (req, res) => {
+    req.logout();
+    res.json(200).json({
+        message: 'Logged out successfully ... '
+    })
+}
+
 //? protect middleware function
 exports.protect = catchAsync(async(req, res, next) => {
     // ! Getting token and check if it is exist or not
@@ -73,16 +82,14 @@ exports.protect = catchAsync(async(req, res, next) => {
     }
 
     if (!token) {
-        return (next(
-            createError(401, 'you are not logged in')
-        ));
+        return next(createError(401, 'you are not logged in'));
     }
 
     // console.log(token);
 
     // ! Validate the token
     const decoded = await promisify(JWT.verify)(token, process.env.JWT_SECRET);
-    console.log(decoded);
+    // console.log(decoded);
     if (!decoded) {
         return next(createError(400, 'Token is Expired '));
     }
@@ -96,9 +103,19 @@ exports.protect = catchAsync(async(req, res, next) => {
     }
 
     // ! Check if the user change his password after the token has been sent
+    // we will apply this later ISA
 
 
     // ! Pass the current user in case we need it for middle ware
     req.user = currentUser;
     next();
 });
+
+exports.restrictTo = (...roles) => {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return next(createError(403, 'You are not allowed to do so .... '))
+        }
+        next()
+    }
+}

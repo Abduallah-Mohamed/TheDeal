@@ -6,7 +6,8 @@ const {
 } = require('../controllers/users');
 const {
     signup,
-    login
+    login,
+    logout
 } = require('../controllers/auth');
 const router = express.Router();
 
@@ -14,10 +15,13 @@ const router = express.Router();
 router.post('/signup', signup);
 // login user
 router.post('/login', login);
+// logout user
+router.get('/logout', logout);
 
 /* GET users listing. */
 router.route('/').get(getAllUsers);
 
 router.route('/:id').get(getSingleUser).delete(deleteSingleUser);
+
 
 module.exports = router;
