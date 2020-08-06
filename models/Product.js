@@ -11,10 +11,11 @@ const ProductSchema = new mongoose.Schema({
     },
     weight: {
         type: Number,
+        default: 100
     },
     description: {
         type: String,
-        required: [true, 'Please descripe this product in few words !!!']
+        required: [true, 'Please, state the specs of the product !!!']
     },
     SKU: {
         type: String,

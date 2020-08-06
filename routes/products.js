@@ -10,11 +10,14 @@ const {
 } = require('../controllers/products');
 
 const {
-    getBestCeapestProducts
-} = require('../middlewares/bestCeapestProducts');
+    getBestCheapestProducts
+} = require('../middlewares/bestCheapestProducts');
+const {
+    protect
+} = require('../controllers/auth');
 
-router.route('/products').get(allProducts).post(addProduct);
-router.route('/products/get-top-5').get(getBestCeapestProducts, allProducts);
+router.route('/products').get(protect, allProducts).post(protect, addProduct);
+router.route('/products/get-top-5').get(getBestCheapestProducts, allProducts);
 router.route('/products/totalPrice').get(totalPrice);
 router.route('/products/:id').delete(deleteProduct).get(getProduct);
 
