@@ -7,7 +7,9 @@ const {
 const {
     signup,
     login,
-    logout
+    logout,
+    forgotPassword,
+    resetPassword
 } = require('../controllers/auth');
 const router = express.Router();
 
@@ -17,6 +19,10 @@ router.post('/signup', signup);
 router.post('/login', login);
 // logout user
 router.get('/logout', logout);
+// forgot Password
+router.post('/forgotPassword', forgotPassword);
+// Reset Password
+router.patch('/resetPassword/:token', resetPassword);
 
 /* GET users listing. */
 router.route('/').get(getAllUsers);

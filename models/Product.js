@@ -32,7 +32,7 @@ const ProductSchema = new mongoose.Schema({
 
 /**
  * i willl do virtual populate to get all the reviews for each Product
- * because i made the parent reference which the product (parent) does NOT know anything about his Chidren (Reviews)
+ * because i made the parent reference which the product (parent) does NOT know anything about his Children (Reviews)
  */
 ProductSchema.virtual('reviews', {
     ref: 'Review',
